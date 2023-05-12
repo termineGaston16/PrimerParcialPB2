@@ -9,14 +9,59 @@ public class SoftwarePrincipal {
 	private String nombreDelSoftware;
 	private HashSet<Empleado> listaDeEmpleados;
 	private LinkedList<PuestoDeTrabajo> listaDeZonasDeTrabajo;
-	/*private ArrayList<TrabajoRegistrado> trabajosRegistrados;*/
+	/*private HashSet<TrabajoRegistrado> trabajosRegistrados;*/
 	private HashSet<Menu> listaDeMenues;
 	private Double recaudacion;
 
+	
 
 	public SoftwarePrincipal(String nombreDelSoftware) {
-		this.nombreDelSoftware=nombreDelSoftware;
+		this.nombreDelSoftware = nombreDelSoftware;
+		this.listaDeEmpleados = new HashSet<>();
+		this.listaDeZonasDeTrabajo = new LinkedList<>();
+		this.listaDeMenues = new HashSet<>();
+		/*this.trabajosRegistrados=new HashSet<>();*/
+		this.recaudacion=0.0;
 	}
+
+
+
+
+	public String getNombreDelSoftware() {
+		return nombreDelSoftware;
+	}
+
+	public void setNombreDelSoftware(String nombreDelSoftware) {
+		this.nombreDelSoftware = nombreDelSoftware;
+	}
+
+	public HashSet<Empleado> getListaDeEmpleados() {
+		return listaDeEmpleados;
+	}
+
+	public void setListaDeEmpleados(HashSet<Empleado> listaDeEmpleados) {
+		this.listaDeEmpleados = listaDeEmpleados;
+	}
+	public LinkedList<PuestoDeTrabajo> getListaDeZonasDeTrabajo() {
+		return listaDeZonasDeTrabajo;
+	}
+	public void setListaDeZonasDeTrabajo(LinkedList<PuestoDeTrabajo> listaDeZonasDeTrabajo) {
+		this.listaDeZonasDeTrabajo = listaDeZonasDeTrabajo;
+	}
+	public HashSet<Menu> getListaDeMenues() {
+		return listaDeMenues;
+	}
+	public void setListaDeMenues(HashSet<Menu> listaDeMenues) {
+		this.listaDeMenues = listaDeMenues;
+	}
+	public Double getRecaudacion() {
+		return recaudacion;
+	}
+	public void setRecaudacion(Double recaudacion) {
+		this.recaudacion = recaudacion;
+	}
+
+
 
 
 	public void agregarUnEmpleadoAlSistema(Empleado empleado) {
@@ -26,6 +71,48 @@ public class SoftwarePrincipal {
 	public int cantidadDeEmpleadosRegistrados() {
 		return this.listaDeEmpleados.size();
 	}
+
+	public void agregarUnPuestoDeTrabajo(Lobby lobby) {
+		this.listaDeZonasDeTrabajo.add(lobby);
+	}
+
+
+	public int cantidadDePuestosDeTrabajosAgregados() {
+		return this.listaDeZonasDeTrabajo.size();
+	}
+
+
+	public Empleado buscarEmpleadoEnElSistema(int idDelEmpelado) {
+		for (Empleado empleado : listaDeEmpleados) {
+			if (empleado.getId().equals(idDelEmpelado)) {
+				return empleado;
+			}
+		}
+		return null;
+	}
+
+	public Lobby buscarPuestoDeTrabajoLobbyEnElSistema(int idDelPuestoDeTrabajo) {
+		for (PuestoDeTrabajo puestoDeTrabajo : listaDeZonasDeTrabajo) {
+			if (puestoDeTrabajo.getClass().equals(Lobby.class)&&puestoDeTrabajo.getIdDelPuesto().equals(idDelPuestoDeTrabajo)) {
+				return (Lobby) puestoDeTrabajo;
+			}
+		}
+		return null;
+	}
+
+	public int cantidadDeEmpleadosAsignadosEnElLobby(int idDelPuestoDeTrabajo) {
+		for (PuestoDeTrabajo puestoDeTrabajo : listaDeZonasDeTrabajo) {
+			if (puestoDeTrabajo.getClass().equals(Lobby.class)&&puestoDeTrabajo.getIdDelPuesto().equals(idDelPuestoDeTrabajo)) {
+				return puestoDeTrabajo.getListaDeEmpleadosAsignadosAEstePuestoDeTrabajo().size();
+			}
+		}
+		return 0;
+	}
+
+
+
+
+	
 
 	
 	

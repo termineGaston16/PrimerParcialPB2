@@ -19,6 +19,11 @@ public class Mantenimiento extends Empleado{
 	};
 	public void agregarCamaras() {
 		
+	}
+
+
+	public void agregarUnaZonaDeTrabajo(Lobby lobby, SoftwarePrincipal sf) {
+		sf.agregarUnPuestoDeTrabajo(lobby);
 	};
 
 }

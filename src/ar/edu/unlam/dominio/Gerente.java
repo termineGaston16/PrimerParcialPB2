@@ -28,7 +28,13 @@ public class Gerente extends Empleado{
 	public void suspenderEmpleado() {
 		
 	};
-	public void asignarUnaLaborAUnEmpleado() {
+	
+	public void asignarElLaborDeLobbyAUnEmpleado(int idDelEmpelado, int idDelPuestoDeTrabajo, SoftwarePrincipal sf) {
+		Empleado empleadoAsignado=sf.buscarEmpleadoEnElSistema(idDelEmpelado);
+		Lobby puestoAsignado=sf.buscarPuestoDeTrabajoLobbyEnElSistema(idDelPuestoDeTrabajo);
+		
+		puestoAsignado.agregarUnEmpleadoAEstePuestoDeTrabajo(empleadoAsignado);
+		
 		
 	};
 	

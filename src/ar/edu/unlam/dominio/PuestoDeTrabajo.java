@@ -1,10 +1,16 @@
 package ar.edu.unlam.dominio;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 public class PuestoDeTrabajo {
 	
-	private EstadoDelPuesto estadoDelPuesto;
-	private Integer cantidadMaximaDeEmpleadosParaEstePuesto;
-	private Integer idDelPuesto;
+	protected EstadoDelPuesto estadoDelPuesto;
+	protected Integer cantidadMaximaDeEmpleadosParaEstePuesto;
+	protected Integer idDelPuesto;
+	protected HashSet<Empleado> listaDeEmpleadosAsignadosAEstePuestoDeTrabajo;
+	protected HashSet<CamaraDeSeguridad> listaDeCamarasAsignadasAEstePuestoDeTrabajo;
+	
 	
 	public PuestoDeTrabajo(EstadoDelPuesto estadoDelPuesto, Integer cantidadMaximaDeEmpleadosParaEstePuesto,
 			Integer idDelPuesto) {
@@ -12,7 +18,33 @@ public class PuestoDeTrabajo {
 		this.estadoDelPuesto = estadoDelPuesto;
 		this.cantidadMaximaDeEmpleadosParaEstePuesto = cantidadMaximaDeEmpleadosParaEstePuesto;
 		this.idDelPuesto = idDelPuesto;
+		this.listaDeEmpleadosAsignadosAEstePuestoDeTrabajo=new HashSet<>();
+		this.listaDeCamarasAsignadasAEstePuestoDeTrabajo=new HashSet<>();
+		
 	}
+
+	
+	public HashSet<Empleado> getListaDeEmpleadosAsignadosAEstePuestoDeTrabajo() {
+		return listaDeEmpleadosAsignadosAEstePuestoDeTrabajo;
+	}
+
+
+	public void setListaDeEmpleadosAsignadosAEstePuestoDeTrabajo(
+			HashSet<Empleado> listaDeEmpleadosAsignadosAEstePuestoDeTrabajo) {
+		this.listaDeEmpleadosAsignadosAEstePuestoDeTrabajo = listaDeEmpleadosAsignadosAEstePuestoDeTrabajo;
+	}
+
+
+	public HashSet<CamaraDeSeguridad> getListaDeCamarasAsignadasAEstePuestoDeTrabajo() {
+		return listaDeCamarasAsignadasAEstePuestoDeTrabajo;
+	}
+
+
+	public void setListaDeCamarasAsignadasAEstePuestoDeTrabajo(
+			HashSet<CamaraDeSeguridad> listaDeCamarasAsignadasAEstePuestoDeTrabajo) {
+		this.listaDeCamarasAsignadasAEstePuestoDeTrabajo = listaDeCamarasAsignadasAEstePuestoDeTrabajo;
+	}
+
 
 	public EstadoDelPuesto getEstadoDelPuesto() {
 		return estadoDelPuesto;
@@ -37,7 +69,7 @@ public class PuestoDeTrabajo {
 	public void setIdDelPuesto(Integer idDelPuesto) {
 		this.idDelPuesto = idDelPuesto;
 	}
-	
+
 	
 	
 	
