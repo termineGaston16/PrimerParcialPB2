@@ -9,7 +9,7 @@ public class SoftwarePrincipal {
 	private String nombreDelSoftware;
 	private HashSet<Empleado> listaDeEmpleados;
 	private LinkedList<PuestoDeTrabajo> listaDeZonasDeTrabajo;
-	private HashSet<InformeDeUnTrabajo> trabajosRegistrados;
+	private HashSet<InformeDeUnTrabajo> listaDeInformesRealizados;
 	private HashSet<Menu> listaDeMenues;
 	private Double recaudacion;
 
@@ -20,7 +20,7 @@ public class SoftwarePrincipal {
 		this.listaDeEmpleados = new HashSet<>();
 		this.listaDeZonasDeTrabajo = new LinkedList<>();
 		this.listaDeMenues = new HashSet<>();
-		this.trabajosRegistrados=new HashSet<>();
+		this.listaDeInformesRealizados=new HashSet<>();
 		this.recaudacion=0.0;
 	}
 
@@ -156,6 +156,15 @@ public class SoftwarePrincipal {
 			}
 		}
 		return 0;
+	}
+
+
+
+
+	public void registrarInformeDeTrabajo(InformeDeUnTrabajo informe) {
+		if (informe.getPuestoDeTrabajoEnDondeSeRealizoElInforme().estadoDelPuesto.equals(EstadoDelPuesto.SEGURO)||informe.getPuestoDeTrabajoEnDondeSeRealizoElInforme().estadoDelPuesto.equals(EstadoDelPuesto.EN_REPARACION)) {
+			this.listaDeInformesRealizados.add(informe);
+		}
 	}
 
 

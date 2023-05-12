@@ -121,7 +121,8 @@ public class TestSoftwareMc {
 		gerente.asignarElLaborDeCocinaAUnEmpleado(002, 1, sf);
 		gerente.asignarElLaborDeCocinaAUnEmpleado(003, 1, sf);
 		
-		informe=new InformeDeUnTrabajo();
+		informe=new InformeDeUnTrabajo(0001,cocina,cocina.getListaDeEmpleadosAsignadosAEstePuestoDeTrabajo().size(),"12/05/2023");
+		sf.registrarInformeDeTrabajo(informe);
 		
 		
 		//EVALUACIÓN
