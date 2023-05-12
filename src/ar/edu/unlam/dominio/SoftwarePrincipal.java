@@ -9,7 +9,7 @@ public class SoftwarePrincipal {
 	private String nombreDelSoftware;
 	private HashSet<Empleado> listaDeEmpleados;
 	private LinkedList<PuestoDeTrabajo> listaDeZonasDeTrabajo;
-	/*private HashSet<TrabajoRegistrado> trabajosRegistrados;*/
+	private HashSet<InformeDeUnTrabajo> trabajosRegistrados;
 	private HashSet<Menu> listaDeMenues;
 	private Double recaudacion;
 
@@ -20,7 +20,7 @@ public class SoftwarePrincipal {
 		this.listaDeEmpleados = new HashSet<>();
 		this.listaDeZonasDeTrabajo = new LinkedList<>();
 		this.listaDeMenues = new HashSet<>();
-		/*this.trabajosRegistrados=new HashSet<>();*/
+		this.trabajosRegistrados=new HashSet<>();
 		this.recaudacion=0.0;
 	}
 
@@ -128,6 +128,30 @@ public class SoftwarePrincipal {
 	public Object cantidadDeEmpleadosAsignadosEnCaja(int idDelPuestoDeTrabajo) {
 		for (PuestoDeTrabajo puestoDeTrabajo : listaDeZonasDeTrabajo) {
 			if (puestoDeTrabajo.getClass().equals(Caja.class)&&puestoDeTrabajo.getIdDelPuesto().equals(idDelPuestoDeTrabajo)) {
+				return puestoDeTrabajo.getListaDeEmpleadosAsignadosAEstePuestoDeTrabajo().size();
+			}
+		}
+		return 0;
+	}
+
+
+
+
+	public Cocina buscarPuestoDeTrabajoCocinaEnElSistema(int idDeCocina) {
+		for (PuestoDeTrabajo puestoDeTrabajo : listaDeZonasDeTrabajo) {
+			if (puestoDeTrabajo.getClass().equals(Cocina.class)&&puestoDeTrabajo.getIdDelPuesto().equals(idDeCocina)) {
+				return (Cocina) puestoDeTrabajo;
+			}
+		}
+		return null;
+	}
+
+
+
+
+	public Object cantidadDeEmpleadosAsignadosEnCocina(int idDePuestoDeTrabajo) {
+		for (PuestoDeTrabajo puestoDeTrabajo : listaDeZonasDeTrabajo) {
+			if (puestoDeTrabajo.getClass().equals(Cocina.class)&&puestoDeTrabajo.getIdDelPuesto().equals(idDePuestoDeTrabajo)) {
 				return puestoDeTrabajo.getListaDeEmpleadosAsignadosAEstePuestoDeTrabajo().size();
 			}
 		}

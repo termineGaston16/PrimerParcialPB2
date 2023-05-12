@@ -79,7 +79,7 @@ public class Caja extends PuestoDeTrabajo{
 			}
 		}
 		
-		if (cantidadTotalDeCamarasPrendidas.equals(cantidadDeCamarasEnTotal)&&this.listaDeEmpleadosAsignadosAEstePuestoDeTrabajo.size()<this.cantidadMaximaDeEmpleadosParaEstePuesto) {
+		if (cantidadTotalDeCamarasPrendidas.equals(cantidadDeCamarasEnTotal)&&this.listaDeEmpleadosAsignadosAEstePuestoDeTrabajo.size()<this.cantidadMaximaDeEmpleadosParaEstePuesto&&this.estadoDelPuesto.equals(EstadoDelPuesto.SEGURO)||this.estadoDelPuesto.equals(EstadoDelPuesto.EN_REPARACION)) {
 			this.listaDeEmpleadosAsignadosAEstePuestoDeTrabajo.add(empleadoAsignado);
 		}
 		

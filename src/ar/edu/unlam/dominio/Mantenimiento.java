@@ -41,6 +41,12 @@ public class Mantenimiento extends Empleado{
 		
 	}
 
+
+	public void agregarUnaCocina(Cocina cocina, SoftwarePrincipal sf) {
+		sf.agregarUnPuestoDeTrabajo(cocina);
+		
+	}
+
 	
 
 }

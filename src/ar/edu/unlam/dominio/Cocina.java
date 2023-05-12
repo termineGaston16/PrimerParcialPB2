@@ -13,12 +13,20 @@ public class Cocina extends PuestoDeTrabajo{
 		this.laCocinaEstaEstable = laCocinaEstaEstable;
 	}
 
+
 	public Boolean getLaCocinaEstaEstable() {
 		return laCocinaEstaEstable;
 	}
 
 	public void setLaCocinaEstaEstable(Boolean laCocinaEstaEstable) {
 		this.laCocinaEstaEstable = laCocinaEstaEstable;
+	}
+
+	public void agregarUnEmpleadoAEstePuestoDeTrabajo(Empleado empleadoAsignado) {
+		if (this.laCocinaEstaEstable&&this.estadoDelPuesto.equals(EstadoDelPuesto.SEGURO)||this.estadoDelPuesto.equals(EstadoDelPuesto.EN_REPARACION)&&this.listaDeEmpleadosAsignadosAEstePuestoDeTrabajo.size()<this.cantidadMaximaDeEmpleadosParaEstePuesto) {
+		this.listaDeEmpleadosAsignadosAEstePuestoDeTrabajo.add(empleadoAsignado);	
+		}
+		
 	}
 
 	

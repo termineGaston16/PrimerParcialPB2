@@ -6,9 +6,11 @@ import org.junit.Test;
 
 import ar.edu.unlam.dominio.Caja;
 import ar.edu.unlam.dominio.CamaraDeSeguridad;
+import ar.edu.unlam.dominio.Cocina;
 import ar.edu.unlam.dominio.Empleado;
 import ar.edu.unlam.dominio.EstadoDelPuesto;
 import ar.edu.unlam.dominio.Gerente;
+import ar.edu.unlam.dominio.InformeDeUnTrabajo;
 import ar.edu.unlam.dominio.Lobby;
 import ar.edu.unlam.dominio.Mantenimiento;
 import ar.edu.unlam.dominio.SoftwarePrincipal;
@@ -89,6 +91,48 @@ public class TestSoftwareMc {
 	
 		
 	}
+	
+	///////////////////////////////////
+	@Test
+	public void queSePuedaRegistrarElInformeDeUnTrabajo() {
+		
+		//INICIALIZACIÓN
+		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
+		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10);
+		Cocina cocina=new Cocina(EstadoDelPuesto.EN_REPARACION,4,1,true);
+		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"LEO","SANCHEZ",14784225,1200.0);
+		Empleado empleado=null;
+		InformeDeUnTrabajo informe=null;
+		
+		
+		//EJECUCIÓN
+		empleadoDeMantenimiento.agregarUnaCocina(cocina, sf);
+		
+		empleado=new Empleado(002,"TOMÁS","GONZALES",44121456,700.0);
+		gerente.contratarEmpleado(empleado,sf);
+		
+		empleado=new Empleado(003,"JAZ","KILOS",12547896,700.0);
+		gerente.contratarEmpleado(empleado,sf);
+		
+		empleado=new Empleado(004,"TOMAS","BOTACHI",223147852,700.0);
+		gerente.contratarEmpleado(empleado,sf);
+		
+		
+		gerente.asignarElLaborDeCocinaAUnEmpleado(002, 1, sf);
+		gerente.asignarElLaborDeCocinaAUnEmpleado(003, 1, sf);
+		
+		informe=new InformeDeUnTrabajo();
+		
+		
+		//EVALUACIÓN
+		assertEquals(3, sf.cantidadDeEmpleadosRegistrados());
+		assertEquals(2, sf.cantidadDeEmpleadosAsignadosEnCocina(1));
+		
+		
+		
+		
+	}
+	
 	
 	
 }

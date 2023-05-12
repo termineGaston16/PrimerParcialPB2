@@ -51,7 +51,17 @@ public class Gerente extends Empleado{
 		
 		puestoAsignado.agregarUnEmpleadoAEstePuestoDeTrabajo(empleadoAsignado);
 		
-	};
+	}
+
+
+
+	public void asignarElLaborDeCocinaAUnEmpleado(int idDelEmpelado, int idDeCocina, SoftwarePrincipal sf) {
+		Empleado empleadoAsignado=sf.buscarEmpleadoEnElSistema(idDelEmpelado);
+		Cocina puestoAsignado=sf.buscarPuestoDeTrabajoCocinaEnElSistema(idDeCocina);
+		
+		puestoAsignado.agregarUnEmpleadoAEstePuestoDeTrabajo(empleadoAsignado);
+		
+	}
 	
 
 }
