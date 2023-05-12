@@ -8,14 +8,18 @@ public class Gerente extends Empleado{
 	private Boolean tieneConchera;
 	private Integer cantidadDeEmpleadosACargo;
 		
-	
-	public Gerente() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
-	public void contratarEmpleado() {
-		
+	public Gerente(Integer id, String nombre, String apellido, Integer dni, Double sueldo, Boolean tieneConchera,
+			Integer cantidadDeEmpleadosACargo) {
+		super(id, nombre, apellido, dni, sueldo);
+		this.tieneConchera = tieneConchera;
+		this.cantidadDeEmpleadosACargo = cantidadDeEmpleadosACargo;
+	}
+	
+	
+
+	public void contratarEmpleado(Empleado empleado, SoftwarePrincipal sf) {
+		sf.agregarUnEmpleadoAlSistema(empleado);
 	};
 	
 	public void despedirEmpleado() {

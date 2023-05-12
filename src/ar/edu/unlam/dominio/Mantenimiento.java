@@ -2,10 +2,12 @@ package ar.edu.unlam.dominio;
 
 public class Mantenimiento extends Empleado{
 		
-	public Mantenimiento() {
-		super();
-		// TODO Auto-generated constructor stub
+	public Mantenimiento(Integer id, String nombre, String apellido, Integer dni, Double sueldo) {
+		super(id, nombre, apellido, dni, sueldo);
+	
 	}
+	
+	
 	public void rreglarUnPuestoDeTrabajo() {
 		
 	};

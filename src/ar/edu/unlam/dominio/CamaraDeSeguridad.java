@@ -4,6 +4,7 @@ public class CamaraDeSeguridad {
 	
 	 private Integer idDeCamara;
 	 private Boolean estaPrendida;
+	 
 	public CamaraDeSeguridad(Integer idDeCamara, Boolean estaPrendida) {
 		this.idDeCamara = idDeCamara;
 		this.estaPrendida = estaPrendida;
