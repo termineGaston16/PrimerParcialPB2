@@ -1,6 +1,7 @@
 package ar.edu.unlam.dominio;
 
 import java.util.HashSet;
+import java.util.Objects;
 
 public class InformeDeUnTrabajo {
 	private Integer idDeInforme;
@@ -46,6 +47,23 @@ public class InformeDeUnTrabajo {
 
 	public void setFechaEnLaQueSeRealizoElRegistro(String fechaEnLaQueSeRealizoElRegistro) {
 		this.fechaEnLaQueSeRealizoElRegistro = fechaEnLaQueSeRealizoElRegistro;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idDeInforme);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		InformeDeUnTrabajo other = (InformeDeUnTrabajo) obj;
+		return Objects.equals(idDeInforme, other.idDeInforme);
 	}
 	
 	

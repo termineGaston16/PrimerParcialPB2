@@ -18,8 +18,9 @@ public class Gerente extends Empleado{
 	
 	
 
-	public void contratarEmpleado(Empleado empleado, SoftwarePrincipal sf) {
-		sf.agregarUnEmpleadoAlSistema(empleado);
+	public Boolean contratarEmpleado(Empleado empleado, SoftwarePrincipal sf) {
+		return(sf.agregarUnEmpleadoAlSistema(empleado))?true:false;
+		
 	};
 	
 	public void despedirEmpleado() {
@@ -29,11 +30,19 @@ public class Gerente extends Empleado{
 		
 	};
 	
-	public void asignarElLaborDeLobbyAUnEmpleado(int idDelEmpelado, int idDelPuestoDeTrabajo, SoftwarePrincipal sf) {
+	public Boolean asignarElLaborDeLobbyAUnEmpleado(int idDelEmpelado, int idDelPuestoDeTrabajo, SoftwarePrincipal sf) {
 		Empleado empleadoAsignado=sf.buscarEmpleadoEnElSistema(idDelEmpelado);
 		Lobby puestoAsignado=sf.buscarPuestoDeTrabajoLobbyEnElSistema(idDelPuestoDeTrabajo);
 		
-		puestoAsignado.agregarUnEmpleadoAEstePuestoDeTrabajo(empleadoAsignado);
+		if (empleadoAsignado==null||puestoAsignado==null) {
+			return false;
+		}
+		
+		Boolean evaluarAgregarUnEmpleadoAPuestoDeTrabajo=puestoAsignado.agregarUnEmpleadoAEstePuestoDeTrabajo(empleadoAsignado);
+		if (evaluarAgregarUnEmpleadoAPuestoDeTrabajo) {
+			return true;
+		}
+		return false;
 		
 		
 	};
@@ -55,11 +64,20 @@ public class Gerente extends Empleado{
 
 
 
-	public void asignarElLaborDeCocinaAUnEmpleado(int idDelEmpelado, int idDeCocina, SoftwarePrincipal sf) {
+	public Boolean asignarElLaborDeCocinaAUnEmpleado(int idDelEmpelado, int idDeCocina, SoftwarePrincipal sf) {
 		Empleado empleadoAsignado=sf.buscarEmpleadoEnElSistema(idDelEmpelado);
 		Cocina puestoAsignado=sf.buscarPuestoDeTrabajoCocinaEnElSistema(idDeCocina);
 		
-		puestoAsignado.agregarUnEmpleadoAEstePuestoDeTrabajo(empleadoAsignado);
+		if (empleadoAsignado==null||puestoAsignado==null) {
+			return false;
+		}
+		
+		Boolean evaluarAsignarPuesto=puestoAsignado.agregarUnEmpleadoAEstePuestoDeTrabajo(empleadoAsignado);
+		if (evaluarAsignarPuesto) {
+			return true;
+		}
+		
+		return false;
 		
 	}
 	

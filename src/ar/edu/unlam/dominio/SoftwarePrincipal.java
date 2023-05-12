@@ -64,16 +64,16 @@ public class SoftwarePrincipal {
 
 
 
-	public void agregarUnEmpleadoAlSistema(Empleado empleado) {
-		this.listaDeEmpleados.add(empleado);
+	public boolean agregarUnEmpleadoAlSistema(Empleado empleado) {
+		return this.listaDeEmpleados.add(empleado);
 	}
 
 	public int cantidadDeEmpleadosRegistrados() {
 		return this.listaDeEmpleados.size();
 	}
 
-	public void agregarUnPuestoDeTrabajo(PuestoDeTrabajo puesto) {
-		this.listaDeZonasDeTrabajo.add(puesto);
+	public boolean agregarUnPuestoDeTrabajo(PuestoDeTrabajo puesto) {
+		return this.listaDeZonasDeTrabajo.add(puesto);
 	}
 
 
@@ -161,10 +161,17 @@ public class SoftwarePrincipal {
 
 
 
-	public void registrarInformeDeTrabajo(InformeDeUnTrabajo informe) {
-		if (informe.getPuestoDeTrabajoEnDondeSeRealizoElInforme().estadoDelPuesto.equals(EstadoDelPuesto.SEGURO)||informe.getPuestoDeTrabajoEnDondeSeRealizoElInforme().estadoDelPuesto.equals(EstadoDelPuesto.EN_REPARACION)) {
+	public Boolean registrarInformeDeTrabajo(InformeDeUnTrabajo informe) {
+		if (informe.getPuestoDeTrabajoEnDondeSeRealizoElInforme()!=null&&informe.getPuestoDeTrabajoEnDondeSeRealizoElInforme().estadoDelPuesto.equals(EstadoDelPuesto.SEGURO)||informe.getPuestoDeTrabajoEnDondeSeRealizoElInforme().estadoDelPuesto.equals(EstadoDelPuesto.EN_REPARACION)) {
 			this.listaDeInformesRealizados.add(informe);
+			return true;
 		}
+		return false;
+	}
+
+
+	public Object cantidadDeInformesRealizados() {
+		return this.listaDeInformesRealizados.size();
 	}
 
 

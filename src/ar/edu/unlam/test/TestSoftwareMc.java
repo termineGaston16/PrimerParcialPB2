@@ -24,13 +24,15 @@ public class TestSoftwareMc {
 		//INICIALIZACIÓN
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
 		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10);
-		Empleado empleado=new Empleado(002,"TOMÁS","GONZALES",44121456,700.0);
+		Empleado empleado=new Empleado(001,"TOMÁS","GONZALES",44121456,700.0);
 		
 		//EJECUCIÓN
-		gerente.contratarEmpleado(empleado,sf);
+		Boolean contratarEmpelado=gerente.contratarEmpleado(empleado,sf);
+		
 		
 		//EVALUACIÓN
 		assertEquals(1, sf.cantidadDeEmpleadosRegistrados());
+		assertTrue(contratarEmpelado);
 		
 
 	}
@@ -48,10 +50,10 @@ public class TestSoftwareMc {
 		
 		
 		//EJECUCIÓN
-		gerente.contratarEmpleado(empleado,sf);
-		empleadoDeMantenimiento.agregarUnLobby(lobby,sf);
+		Boolean contratarEmpelado=gerente.contratarEmpleado(empleado,sf);
+		Boolean evaluarAgregarPuestoDeTrabajo=empleadoDeMantenimiento.agregarUnLobby(lobby,sf);
 		
-		gerente.asignarElLaborDeLobbyAUnEmpleado(002,01,sf);
+		Boolean evaluarAsignarLabor=gerente.asignarElLaborDeLobbyAUnEmpleado(002,01,sf);
 		
 		//EVALUACIÓN
 		assertEquals(1, sf.cantidadDeEmpleadosRegistrados());
@@ -75,14 +77,14 @@ public class TestSoftwareMc {
 				
 				
 		//EJECUCIÓN
-		gerente.contratarEmpleado(empleado,sf);
-		empleadoDeMantenimiento.agregarUnaCaja(caja,sf);
-		empleadoDeMantenimiento.agregarCamaraACaja(01,sf,camara);
-		empleadoDeMantenimiento.agregarCamaraACaja(01,sf,camara2);
+		Boolean contratarEmpelado=gerente.contratarEmpleado(empleado,sf);
+		Boolean evaluarAgregarPuestoDeTrabajo=empleadoDeMantenimiento.agregarUnaCaja(caja,sf);
+		Boolean evaluarAgregarUnaCamara=empleadoDeMantenimiento.agregarCamaraACaja(01,sf,camara);
+		evaluarAgregarUnaCamara=empleadoDeMantenimiento.agregarCamaraACaja(01,sf,camara2);
 		
 		empleadoDeMantenimiento.activarODesactivarLaCamaraEnCaja(01,1,sf);	
-	
 		
+	
 		gerente.asignarElLaborDeCajaAUnEmpleado(002, 01, sf);
 		
 				
@@ -103,35 +105,67 @@ public class TestSoftwareMc {
 		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"LEO","SANCHEZ",14784225,1200.0);
 		Empleado empleado=null;
 		InformeDeUnTrabajo informe=null;
+		Caja caja=null;
 		
 		
 		//EJECUCIÓN
-		empleadoDeMantenimiento.agregarUnaCocina(cocina, sf);
+		Boolean evaluarAgregarPuestoDeTrabajo=empleadoDeMantenimiento.agregarUnaCocina(cocina, sf);
 		
 		empleado=new Empleado(002,"TOMÁS","GONZALES",44121456,700.0);
-		gerente.contratarEmpleado(empleado,sf);
+		Boolean evaluarContratarEmpleado=gerente.contratarEmpleado(empleado,sf);
 		
 		empleado=new Empleado(003,"JAZ","KILOS",12547896,700.0);
-		gerente.contratarEmpleado(empleado,sf);
+		evaluarContratarEmpleado=gerente.contratarEmpleado(empleado,sf);
 		
 		empleado=new Empleado(004,"TOMAS","BOTACHI",223147852,700.0);
-		gerente.contratarEmpleado(empleado,sf);
+		evaluarContratarEmpleado=gerente.contratarEmpleado(empleado,sf);
 		
 		
-		gerente.asignarElLaborDeCocinaAUnEmpleado(002, 1, sf);
-		gerente.asignarElLaborDeCocinaAUnEmpleado(003, 1, sf);
+		Boolean evaluarAsignarPuesto=gerente.asignarElLaborDeCocinaAUnEmpleado(002, 1, sf);
+		evaluarAsignarPuesto=gerente.asignarElLaborDeCocinaAUnEmpleado(003, 1, sf);
 		
 		informe=new InformeDeUnTrabajo(0001,cocina,cocina.getListaDeEmpleadosAsignadosAEstePuestoDeTrabajo().size(),"12/05/2023");
-		sf.registrarInformeDeTrabajo(informe);
-		
+		Boolean evaluarRegistrarInforme=sf.registrarInformeDeTrabajo(informe);
+
 		
 		//EVALUACIÓN
 		assertEquals(3, sf.cantidadDeEmpleadosRegistrados());
 		assertEquals(2, sf.cantidadDeEmpleadosAsignadosEnCocina(1));
+		assertEquals(1, sf.cantidadDeInformesRealizados());
 		
 		
 		
+	}
+	
+	///////////////////////////////////
+	@Test
+	public void queNoSePuedaRegistrarUnTrabajoEnUnaZonaInsegura() {
 		
+		//INICIALIZACIÓN
+		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
+		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10);
+		Lobby lobby=new Lobby(EstadoDelPuesto.SEGURO,3,1,10,false);
+		Caja caja=new Caja(EstadoDelPuesto.INSEGURO,2,01,1,100.0,0);
+		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"LEO","SANCHEZ",14784225,1200.0);
+		InformeDeUnTrabajo informe=null;
+				
+				
+		//EJECUCIÓN
+		empleadoDeMantenimiento.agregarUnaCaja(caja, sf);
+		empleadoDeMantenimiento.agregarUnLobby(lobby, sf);
+				
+
+		informe=new InformeDeUnTrabajo(0001,caja,caja.getListaDeEmpleadosAsignadosAEstePuestoDeTrabajo().size(),"25/09/2023");
+		Boolean evaluarRegistrarInforme=sf.registrarInformeDeTrabajo(informe);
+		informe=new InformeDeUnTrabajo(0002,lobby,lobby.getListaDeEmpleadosAsignadosAEstePuestoDeTrabajo().size(),"30/09/2023");
+		evaluarRegistrarInforme=sf.registrarInformeDeTrabajo(informe);
+
+	
+		//EVALUACIÓN
+		assertEquals(1, sf.cantidadDeInformesRealizados());
+				
+				
+	
 	}
 	
 	

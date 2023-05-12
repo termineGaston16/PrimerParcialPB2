@@ -39,10 +39,12 @@ public class Lobby extends PuestoDeTrabajo{
 		return false;
 	}
 
-	public void agregarUnEmpleadoAEstePuestoDeTrabajo(Empleado empleadoAsignado) {
+	public Boolean agregarUnEmpleadoAEstePuestoDeTrabajo(Empleado empleadoAsignado) {
 		if (this.listaDeEmpleadosAsignadosAEstePuestoDeTrabajo.size()<this.getCantidadMaximaDeEmpleadosParaEstePuesto()&&this.estadoDelPuesto.equals(EstadoDelPuesto.SEGURO)||this.estadoDelPuesto.equals(EstadoDelPuesto.EN_REPARACION)) {
 			this.listaDeEmpleadosAsignadosAEstePuestoDeTrabajo.add(empleadoAsignado);
+			return true;
 		}
+		return false;
 	}
 	
 	

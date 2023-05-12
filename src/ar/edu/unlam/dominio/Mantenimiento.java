@@ -19,19 +19,28 @@ public class Mantenimiento extends Empleado{
 	};
 	
 
-	public void agregarUnLobby(Lobby lobby, SoftwarePrincipal sf) {
-		sf.agregarUnPuestoDeTrabajo(lobby);
+	public Boolean agregarUnLobby(Lobby lobby, SoftwarePrincipal sf) {
+		return(sf.agregarUnPuestoDeTrabajo(lobby))?true:false;
 	}
 
 
-	public void agregarUnaCaja(Caja caja, SoftwarePrincipal sf) {
-		sf.agregarUnPuestoDeTrabajo(caja);
+	public Boolean agregarUnaCaja(Caja caja, SoftwarePrincipal sf) {
+		return(sf.agregarUnPuestoDeTrabajo(caja))?true:false;
 	}
 
 
-	public void agregarCamaraACaja(int idDePuestoDeTrabajo, SoftwarePrincipal sf, CamaraDeSeguridad camara) {
+	public Boolean agregarCamaraACaja(int idDePuestoDeTrabajo, SoftwarePrincipal sf, CamaraDeSeguridad camara) {
 		Caja buscarCaja=sf.buscarPuestoDeTrabajoCajaEnElSistema(idDePuestoDeTrabajo);
-		buscarCaja.agregarUnaCamara(camara);
+		if (buscarCaja==null) {
+			return false;
+		}
+		
+		Boolean evaluarAgregarCamara=buscarCaja.agregarUnaCamara(camara);
+		if (evaluarAgregarCamara) {
+			return true;
+		}
+		
+		return false;
 	}
 
 
@@ -42,8 +51,8 @@ public class Mantenimiento extends Empleado{
 	}
 
 
-	public void agregarUnaCocina(Cocina cocina, SoftwarePrincipal sf) {
-		sf.agregarUnPuestoDeTrabajo(cocina);
+	public Boolean agregarUnaCocina(Cocina cocina, SoftwarePrincipal sf) {
+		return(sf.agregarUnPuestoDeTrabajo(cocina))?true:false;
 		
 	}
 

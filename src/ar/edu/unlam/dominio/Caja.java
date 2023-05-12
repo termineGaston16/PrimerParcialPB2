@@ -51,8 +51,8 @@ public class Caja extends PuestoDeTrabajo{
 		
 	}
 
-	public void agregarUnaCamara(CamaraDeSeguridad camara) {
-		this.listaDeCamarasAsignadasAEstePuestoDeTrabajo.add(camara);
+	public Boolean agregarUnaCamara(CamaraDeSeguridad camara) {
+		return this.listaDeCamarasAsignadasAEstePuestoDeTrabajo.add(camara);
 		
 	}
 
