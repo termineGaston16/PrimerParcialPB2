@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import ar.edu.unlam.dominio.Caja;
+import ar.edu.unlam.dominio.CamaraDeSeguridad;
 import ar.edu.unlam.dominio.Empleado;
 import ar.edu.unlam.dominio.EstadoDelPuesto;
 import ar.edu.unlam.dominio.Gerente;
@@ -45,7 +47,7 @@ public class TestSoftwareMc {
 		
 		//EJECUCIÓN
 		gerente.contratarEmpleado(empleado,sf);
-		empleadoDeMantenimiento.agregarUnaZonaDeTrabajo(lobby,sf);
+		empleadoDeMantenimiento.agregarUnLobby(lobby,sf);
 		
 		gerente.asignarElLaborDeLobbyAUnEmpleado(002,01,sf);
 		
@@ -56,7 +58,37 @@ public class TestSoftwareMc {
 	
 	}
 
+	///////////////////////////////////
+	@Test
+	public void queNoSePuedaAsignarUnEmpleadoEnLaCajaSiNoEstanTodasLasCamarasDeSeguridadPrendidas() {
+		
+		//INICIALIZACIÓN
+		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
+		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10);
+		Empleado empleado=new Empleado(002,"TOMÁS","GONZALES",44121456,700.0);
+		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"LEO","SANCHEZ",14784225,1200.0);
+		Caja caja=new Caja(EstadoDelPuesto.SEGURO,2,01,1,100.0,0);
+		CamaraDeSeguridad camara=new CamaraDeSeguridad(1,false);
+		CamaraDeSeguridad camara2=new CamaraDeSeguridad(2,false);
+				
+				
+		//EJECUCIÓN
+		gerente.contratarEmpleado(empleado,sf);
+		empleadoDeMantenimiento.agregarUnaCaja(caja,sf);
+		empleadoDeMantenimiento.agregarCamaraACaja(01,sf,camara);
+		empleadoDeMantenimiento.agregarCamaraACaja(01,sf,camara2);
+		
+		empleadoDeMantenimiento.activarODesactivarLaCamaraEnCaja(01,1,sf);	
 	
+		
+		gerente.asignarElLaborDeCajaAUnEmpleado(002, 01, sf);
+		
+				
+		//EVALUACIÓN
+		assertEquals(0, sf.cantidadDeEmpleadosAsignadosEnCaja(01));
+	
+		
+	}
 	
 	
 }

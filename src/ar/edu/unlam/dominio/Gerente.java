@@ -43,6 +43,14 @@ public class Gerente extends Empleado{
 	};
 	public void pagarSueldoAlEmpleadoEmpleado() {
 		
+	}
+
+	public void asignarElLaborDeCajaAUnEmpleado(int idDelEmpelado, int idDeCaja, SoftwarePrincipal sf) {
+		Empleado empleadoAsignado=sf.buscarEmpleadoEnElSistema(idDelEmpelado);
+		Caja puestoAsignado=sf.buscarPuestoDeTrabajoCajaEnElSistema(idDeCaja);
+		
+		puestoAsignado.agregarUnEmpleadoAEstePuestoDeTrabajo(empleadoAsignado);
+		
 	};
 	
 

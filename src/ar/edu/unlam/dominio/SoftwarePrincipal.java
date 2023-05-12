@@ -72,8 +72,8 @@ public class SoftwarePrincipal {
 		return this.listaDeEmpleados.size();
 	}
 
-	public void agregarUnPuestoDeTrabajo(Lobby lobby) {
-		this.listaDeZonasDeTrabajo.add(lobby);
+	public void agregarUnPuestoDeTrabajo(PuestoDeTrabajo puesto) {
+		this.listaDeZonasDeTrabajo.add(puesto);
 	}
 
 
@@ -113,6 +113,36 @@ public class SoftwarePrincipal {
 
 
 	
+	public Caja buscarPuestoDeTrabajoCajaEnElSistema(int idDePuestoDeTrabajo) {
+		for (PuestoDeTrabajo puestoDeTrabajo : listaDeZonasDeTrabajo) {
+			if (puestoDeTrabajo.getClass().equals(Caja.class)&&puestoDeTrabajo.getIdDelPuesto().equals(idDePuestoDeTrabajo)) {
+				return (Caja) puestoDeTrabajo;
+			}
+		}
+		return null;
+	}
+
+
+
+
+	public Object cantidadDeEmpleadosAsignadosEnCaja(int idDelPuestoDeTrabajo) {
+		for (PuestoDeTrabajo puestoDeTrabajo : listaDeZonasDeTrabajo) {
+			if (puestoDeTrabajo.getClass().equals(Caja.class)&&puestoDeTrabajo.getIdDelPuesto().equals(idDelPuestoDeTrabajo)) {
+				return puestoDeTrabajo.getListaDeEmpleadosAsignadosAEstePuestoDeTrabajo().size();
+			}
+		}
+		return 0;
+	}
+
+
+
+
+
+
+
+
+
+	
 
 	
 	
@@ -120,5 +150,5 @@ public class SoftwarePrincipal {
 	
 	
 	
-	
+
 }

@@ -50,6 +50,40 @@ public class Caja extends PuestoDeTrabajo{
 	public void ingresarAlSistemaElDineroRecaudado() {
 		
 	}
+
+	public void agregarUnaCamara(CamaraDeSeguridad camara) {
+		this.listaDeCamarasAsignadasAEstePuestoDeTrabajo.add(camara);
+		
+	}
+
+	public void activarODesactivarCamaraEnCaja(int idDeCamaraDeSeguridad) {
+		for (CamaraDeSeguridad camaraDeSeguridad : listaDeCamarasAsignadasAEstePuestoDeTrabajo) {
+			if (camaraDeSeguridad.getIdDeCamara().equals(idDeCamaraDeSeguridad)) {
+				if (!camaraDeSeguridad.getEstaPrendida()) {
+					camaraDeSeguridad.setEstaPrendida(true);
+				}else {
+					camaraDeSeguridad.setEstaPrendida(false);
+				}
+			}
+		}
+		
+	}
+
+	public void agregarUnEmpleadoAEstePuestoDeTrabajo(Empleado empleadoAsignado) {
+		Integer cantidadDeCamarasEnTotal=this.listaDeCamarasAsignadasAEstePuestoDeTrabajo.size();
+		Integer cantidadTotalDeCamarasPrendidas=0;
+		
+		for (CamaraDeSeguridad camaraDeSeguridad : listaDeCamarasAsignadasAEstePuestoDeTrabajo) {
+			if (camaraDeSeguridad.getEstaPrendida()) {
+				cantidadTotalDeCamarasPrendidas++;
+			}
+		}
+		
+		if (cantidadTotalDeCamarasPrendidas.equals(cantidadDeCamarasEnTotal)&&this.listaDeEmpleadosAsignadosAEstePuestoDeTrabajo.size()<this.cantidadMaximaDeEmpleadosParaEstePuesto) {
+			this.listaDeEmpleadosAsignadosAEstePuestoDeTrabajo.add(empleadoAsignado);
+		}
+		
+	}
 	
 	
 	

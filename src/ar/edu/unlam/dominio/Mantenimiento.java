@@ -17,13 +17,30 @@ public class Mantenimiento extends Empleado{
 	public void apagarCamaras() {
 		
 	};
-	public void agregarCamaras() {
-		
+	
+
+	public void agregarUnLobby(Lobby lobby, SoftwarePrincipal sf) {
+		sf.agregarUnPuestoDeTrabajo(lobby);
 	}
 
 
-	public void agregarUnaZonaDeTrabajo(Lobby lobby, SoftwarePrincipal sf) {
-		sf.agregarUnPuestoDeTrabajo(lobby);
-	};
+	public void agregarUnaCaja(Caja caja, SoftwarePrincipal sf) {
+		sf.agregarUnPuestoDeTrabajo(caja);
+	}
+
+
+	public void agregarCamaraACaja(int idDePuestoDeTrabajo, SoftwarePrincipal sf, CamaraDeSeguridad camara) {
+		Caja buscarCaja=sf.buscarPuestoDeTrabajoCajaEnElSistema(idDePuestoDeTrabajo);
+		buscarCaja.agregarUnaCamara(camara);
+	}
+
+
+	public void activarODesactivarLaCamaraEnCaja(int idDePuestoDeTrabajo, int idDeCamaraDeSeguridad, SoftwarePrincipal sf) {
+		Caja buscarCaja=sf.buscarPuestoDeTrabajoCajaEnElSistema(idDePuestoDeTrabajo);
+		buscarCaja.activarODesactivarCamaraEnCaja(idDeCamaraDeSeguridad);
+		
+	}
+
+	
 
 }
