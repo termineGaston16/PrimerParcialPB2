@@ -83,7 +83,7 @@ public class Mantenimiento extends Empleado{
 
 
 	public void activarODesactivarLaCamaraEnCocina(int idPuestoDeTrabajo, int idDeCamaraDeSeguridad, SoftwarePrincipal sf) {
-		Cocina buscarCocina=sf.buscarPuestoDeTrabajoCocinaEnElSistema(idDePuestoDeTrabajo);
+		Cocina buscarCocina=sf.buscarPuestoDeTrabajoCocinaEnElSistema(idPuestoDeTrabajo);
 		 buscarCocina.activarODesactivarCamaraEnCocina(idDeCamaraDeSeguridad);
 		}
 	}
