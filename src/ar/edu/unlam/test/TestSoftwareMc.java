@@ -315,5 +315,22 @@ public class TestSoftwareMc {
 		
 	}
 	
+	@Test
+	public void queUnGerentePuedaDespedirAUnEmpleadoSinImportarSuEstado() {		
+		//INICIALIZACION
+		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
+		Gerente gerente=new Gerente(001,"ISABELLA","PEREZ",40650392,1500.0,true,10);
+		Empleado empleado3=new Empleado(004,"Chayanne","Duki",36403182,700.0,EstadoDelEmpleado.LIBRE);
+		Empleado empleado4=new Empleado(005,"Lucas","Pordiosero",32805099,900.0,EstadoDelEmpleado.LIBRE);
+		//EJECUCION
+		Boolean contratarEmpleado3 = gerente.contratarEmpleado(empleado3, sf);
+		Boolean contratarEmpleado4 = gerente.contratarEmpleado(empleado4, sf);
+		gerente.suspenderEmpleado(empleado3);
+		gerente.despedirEmpleado(empleado3,sf);
+		gerente.despedirEmpleado(empleado4,sf);
+		//EVALUACION
+		assertEquals(0, sf.cantidadDeEmpleadosRegistrados());
+	}
+	
 	
 }
