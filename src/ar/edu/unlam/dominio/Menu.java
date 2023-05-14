@@ -4,7 +4,10 @@ public class Menu {
 
 	private String nombreDelCombo;
 	private Double precioDelCombo;
+	
+	
 	public Menu(String nombreDelCombo, Double precioDelCombo) {
+		super();
 		this.nombreDelCombo = nombreDelCombo;
 		this.precioDelCombo = precioDelCombo;
 	}

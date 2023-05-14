@@ -1,8 +1,14 @@
 package ar.edu.unlam.dominio;
 
+import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cajero extends Empleado{
 	
 	private Double saldoInicialDeCaja;
+	
+	private List<Menu> pedidos;
 		
 	public Cajero(Integer id, String nombre, String apellido, Integer dni, Double sueldo, Double saldoInicialDeCaja) {
 		super(id, nombre, apellido, dni, sueldo);
@@ -15,5 +21,15 @@ public class Cajero extends Empleado{
 	public void cobrarAlCliente() {
 		
 	};
+	
+	//public List<Menu> tomarPedido(Menu menu, Cocina cocina) {
+	public List<Menu> tomarPedido(SoftwarePrincipal sf, Menu menu, Cocina cocina) {
+		pedidos = new ArrayList<Menu>();
+		if(cocina.getLaCocinaEstaEstable() && cocina.getEstadoDelPuesto().equals(EstadoDelPuesto.SEGURO)) {
+			HashSet<Menu> menues = sf.agregarUnaHamburguesaAlMenu(menu);
+			pedidos.add(menu);
+		}
+		return pedidos;
+	}
 
 }

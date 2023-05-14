@@ -173,22 +173,11 @@ public class SoftwarePrincipal {
 	public Object cantidadDeInformesRealizados() {
 		return this.listaDeInformesRealizados.size();
 	}
-
-
-
-
-
-
-
-
-
 	
-
-	
-	
-	
-	
-	
+	public HashSet<Menu> agregarUnaHamburguesaAlMenu(Menu menu) {
+		this.listaDeMenues.add(menu);
+		return listaDeMenues;
+	}
 	
 
 }

@@ -2,6 +2,7 @@ package ar.edu.unlam.test;
 
 import static org.junit.Assert.*;
 
+
 import javax.swing.UIManager;
 
 import org.junit.Test;
@@ -19,6 +20,7 @@ import ar.edu.unlam.dominio.Lobby;
 import ar.edu.unlam.dominio.Mantenimiento;
 import ar.edu.unlam.dominio.PuestoDeTrabajo;
 import ar.edu.unlam.dominio.SoftwarePrincipal;
+import ar.edu.unlam.dominio.Menu;
 
 public class TestSoftwareMc {
 
@@ -232,12 +234,20 @@ public class TestSoftwareMc {
 	public void siLaCocinaEstaInestableOInseguraNoSePuedeTomarPedidos() {
 		
 		//INICIALIZACI�N
-		
+		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
+		//Cocina cocina = new Cocina(EstadoDelPuesto.INSEGURO, 5, 1234, false);
+		Cocina cocina2 = new Cocina(EstadoDelPuesto.SEGURO, 5, 1234, true);
+		Menu cuartoDeLibra = new Menu("Cuarto de libra", 200.0);
+		Cajero cajero1 = new Cajero(5678, "Ana", "Lopez", 22456654, 30000.0, 100.0);
 		
 		//EJECUCI�N
-		
+		sf.agregarUnaHamburguesaAlMenu(cuartoDeLibra);
+		Integer esperado = 1;
+		Integer obtenido = cajero1.tomarPedido(sf, cuartoDeLibra, cocina2).size();
 		
 		//EVALUACI�N
+		assertEquals(esperado, obtenido);
+		//assertTrue(obtenido);
 	
 	
 	
