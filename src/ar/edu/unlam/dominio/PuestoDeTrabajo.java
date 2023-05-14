@@ -72,6 +72,7 @@ public class PuestoDeTrabajo {
 	public void setIdDelPuesto(Integer idDelPuesto) {
 		this.idDelPuesto = idDelPuesto;
 	}
+	
 
 	
 	

@@ -86,6 +86,17 @@ public class Mantenimiento extends Empleado{
 		Cocina buscarCocina=sf.buscarPuestoDeTrabajoCocinaEnElSistema(idPuestoDeTrabajo);
 		 buscarCocina.activarODesactivarCamaraEnCocina(idDeCamaraDeSeguridad);
 		}
+	
+	public EstadoDelPuesto cambiarElEstadoDelPuestoSiNoTieneCamaras(PuestoDeTrabajo puestoDeTrabajo, CamaraDeSeguridad idDeCamaraDeSeguridad, SoftwarePrincipal sf) {
+		if(agregarCamaraACocina(puestoDeTrabajo.getIdDelPuesto(), sf, idDeCamaraDeSeguridad)) {
+			puestoDeTrabajo.setEstadoDelPuesto(EstadoDelPuesto.INSEGURO);
+			return puestoDeTrabajo.getEstadoDelPuesto();
+		}else{
+			puestoDeTrabajo.setEstadoDelPuesto(EstadoDelPuesto.SEGURO);
+			return puestoDeTrabajo.getEstadoDelPuesto();
+		}
+	}
+	
 	}
 	
 	

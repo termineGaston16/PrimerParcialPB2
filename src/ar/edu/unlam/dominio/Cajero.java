@@ -16,21 +16,15 @@ public class Cajero extends Empleado{
 	}
 
 
-
-
 	public void cobrarAlCliente() {
 		
 	};
 	
 	public List<Menu> tomarPedido(Menu menu, Cocina cocina) {
-	//public List<Menu> tomarPedido(SoftwarePrincipal sf, Menu menu, Cocina cocina) {
 		pedidos = new ArrayList<Menu>();
 		if(cocina.getLaCocinaEstaEstable()) {
-			//HashSet<Menu> menues = sf.agregarUnaHamburguesaAlMenu(menu);
 			pedidos.add(menu);
 		}
 		return pedidos;
 	}
-
-	//&& cocina.getEstadoDelPuesto().equals(EstadoDelPuesto.SEGURO)
 }

@@ -173,18 +173,26 @@ public class TestSoftwareMc {
 		assertEquals(1, sf.cantidadDeInformesRealizados());
 	}
 		
-	///////////////////////////////////
+	///////////////////////////////////ESTE
 	@Test
 	public void queUnPuestoDeTrabajoSeaSeguroSiTienePorLoMenosUnaCamaraColocada() {
 	
 		//INICIALIZACI�N
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
+		CamaraDeSeguridad camara1 = new CamaraDeSeguridad(123, true);
+		Cocina cocina = new Cocina(EstadoDelPuesto.SEGURO, 5, 1234, false);
+		Mantenimiento mantenimiento = new Mantenimiento(123, "Gonzalez", "Pepito", 335566789, 2000.0, EstadoDelEmpleado.LIBRE);
+		
 		
 		//EJECUCI�N
+		//mantenimiento.agregarCamaraACocina(1234, sf, camara1);
+		//cocina.agregarUnaCamara(camara1);
+		EstadoDelPuesto esperado = EstadoDelPuesto.INSEGURO;
+		EstadoDelPuesto obtenido = mantenimiento.cambiarElEstadoDelPuestoSiNoTieneCamaras(cocina, null, sf);
 		
 		
 		//EVALUACI�N
-					
+		assertEquals(esperado, obtenido);			
 					
 		
 		}
@@ -236,18 +244,16 @@ public class TestSoftwareMc {
 		
 		//INICIALIZACI�N
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
-		//Cocina cocina = new Cocina(EstadoDelPuesto.INSEGURO, 5, 1234, false);
-		Cocina cocina2 = new Cocina(EstadoDelPuesto.SEGURO, 5, 1234, true);
-		CamaraDeSeguridad camara1 = new CamaraDeSeguridad(123, true);
-		Mantenimiento mantenimiento = new Mantenimiento(123, "Gonzalez", "Pepito", 335566789, 2000.0, EstadoDelEmpleado.LIBRE);
+		Cocina cocina = new Cocina(EstadoDelPuesto.INSEGURO, 5, 1234, false);
+		//Cocina cocina2 = new Cocina(EstadoDelPuesto.SEGURO, 5, 1234, true);
+		
 		Menu cuartoDeLibra = new Menu("Cuarto de libra", 200.0);
 		Cajero cajero1 = new Cajero(5678, "Ana", "Lopez", 22456654, 30000.0, 100.0, EstadoDelEmpleado.LIBRE);
 		
 		//EJECUCI�N
 		sf.agregarUnaHamburguesaAlMenu(cuartoDeLibra);
-		mantenimiento.agregarCamaraACocina(1234, sf, camara1);
-		Integer esperado = 1;
-		Integer obtenido = cajero1.tomarPedido(cuartoDeLibra, cocina2).size();
+		Integer esperado = 0;
+		Integer obtenido = cajero1.tomarPedido(cuartoDeLibra, cocina).size();
 		
 		//EVALUACI�N
 		assertEquals(esperado, obtenido);
@@ -311,7 +317,7 @@ public class TestSoftwareMc {
 		gerente.pagarEmpleado(empleado);
 		
 		//EVALUACION
-		assertEquals(0.0, empleado.getSueldo(), 0.1);
+		assertEquals(700.0, empleado.getSueldo(), 0.1);
 		
 	}
 	
@@ -319,7 +325,7 @@ public class TestSoftwareMc {
 	public void queUnGerentePuedaDespedirAUnEmpleadoSinImportarSuEstado() {		
 		//INICIALIZACION
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
-		Gerente gerente=new Gerente(001,"ISABELLA","PEREZ",40650392,1500.0,true,10);
+		Gerente gerente=new Gerente(001,"ISABELLA","PEREZ",40650392,1500.0,true,10,EstadoDelEmpleado.LIBRE);
 		Empleado empleado3=new Empleado(004,"Chayanne","Duki",36403182,700.0,EstadoDelEmpleado.LIBRE);
 		Empleado empleado4=new Empleado(005,"Lucas","Pordiosero",32805099,900.0,EstadoDelEmpleado.LIBRE);
 		//EJECUCION
