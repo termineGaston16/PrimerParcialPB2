@@ -6,14 +6,14 @@ import java.util.HashSet;
 
 public class Gerente extends Empleado{
 	
-	private Boolean tieneConchera;
+	private Boolean tieneCochera;
 	private Integer cantidadDeEmpleadosACargo;
 		
 
-	public Gerente(Integer id, String nombre, String apellido, Integer dni, Double sueldo, Boolean tieneConchera,
+	public Gerente(Integer id, String nombre, String apellido, Integer dni, Double sueldo, Boolean tieneCochera,
 			Integer cantidadDeEmpleadosACargo) {
-		super(id, nombre, apellido, dni, sueldo);
-		this.tieneConchera = tieneConchera;
+		super(id, nombre, apellido, dni, sueldo, estadoDelEmpleado);
+		this.tieneCochera = tieneCochera;
 		this.cantidadDeEmpleadosACargo = cantidadDeEmpleadosACargo;
 	}
 	
@@ -24,12 +24,6 @@ public class Gerente extends Empleado{
 		
 	};
 	
-	public void despedirEmpleado() {
-		
-	};
-	public void suspenderEmpleado() {
-		
-	};
 	
 	public Boolean asignarElLaborDeLobbyAUnEmpleado(int idDelEmpelado, int idDelPuestoDeTrabajo, SoftwarePrincipal sf) {
 		Empleado empleadoAsignado=sf.buscarEmpleadoEnElSistema(idDelEmpelado);
@@ -64,8 +58,6 @@ public class Gerente extends Empleado{
 		
 	}
 
-
-
 	public Boolean asignarElLaborDeCocinaAUnEmpleado(int idDelEmpelado, int idDeCocina, SoftwarePrincipal sf) {
 		Empleado empleadoAsignado=sf.buscarEmpleadoEnElSistema(idDelEmpelado);
 		Cocina puestoAsignado=sf.buscarPuestoDeTrabajoCocinaEnElSistema(idDeCocina);
@@ -83,5 +75,45 @@ public class Gerente extends Empleado{
 		
 	}
 	
+	public double contabilizarCajas(Caja ... cajas) {
+		double montoTotal=0.0;
+		for (Caja caja:cajas) {
+			montoTotal += caja.getMontoActualDeLaCaja();
+		}
+		return montoTotal;
+		
+	}
+	
+    public void aumentarIngresoEmpleado(Empleado empleado, double aumento) {
+        double nuevoSalario = empleado.getSueldo() + aumento;
+        empleado.setSueldo(nuevoSalario);
+    }
+    
+	public void suspenderEmpleado(Empleado empleado) {
+		if (empleado.getEstadoDelEmpleado().equals(estadoDelEmpleado.LIBRE)) {
+			empleado.setEstadoDelEmpleado(estadoDelEmpleado.SUSPENDIDO);
+		}
+				
+		
+	};
+    
+	
+	public void despedirEmpleado(Empleado empleado, SoftwarePrincipal softwarePrincipal) {
+	      
+	      HashSet<Empleado> listaDeEmpleados = softwarePrincipal.getListaDeEmpleados();
 
+	      listaDeEmpleados.remove(empleado);
+	   }
+
+
+
+	public void pagarEmpleado(Empleado empleado) {
+		double sueldoActual=empleado.getSueldo();
+		double montoAPagar=800.0;
+		if (empleado.getEstadoDelEmpleado().equals(estadoDelEmpleado.LIBRE)){
+			empleado.setSueldo(sueldoActual + montoAPagar);
+		}
+		
+	}
+    
 }

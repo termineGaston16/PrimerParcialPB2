@@ -9,13 +9,23 @@ public class Empleado {
 	protected String apellido;
 	protected Integer dni;
 	protected Double sueldo;
+	protected EstadoDelEmpleado estadoDelEmpleado;
 	
-	public Empleado(Integer id, String nombre, String apellido, Integer dni, Double sueldo) {
+	public Empleado(Integer id, String nombre, String apellido, Integer dni, Double sueldo, EstadoDelEmpleado estadoDelEmpleado) {
+		this.estadoDelEmpleado = estadoDelEmpleado;
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
 		this.sueldo = sueldo;
+	}
+
+	public EstadoDelEmpleado getEstadoDelEmpleado() {
+		return estadoDelEmpleado;
+	}
+
+	public void setEstadoDelEmpleado(EstadoDelEmpleado estadoDelEmpleado) {
+		this.estadoDelEmpleado = estadoDelEmpleado;
 	}
 
 	public Integer getId() {
@@ -58,6 +68,7 @@ public class Empleado {
 		this.sueldo = sueldo;
 	}
 
+	
 	
 	@Override
 	public int hashCode() {

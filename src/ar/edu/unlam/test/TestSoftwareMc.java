@@ -12,6 +12,7 @@ import ar.edu.unlam.dominio.CamaraDeSeguridad;
 import ar.edu.unlam.dominio.Cocina;
 import ar.edu.unlam.dominio.Empleado;
 import ar.edu.unlam.dominio.EmpleadoDeLimpieza;
+import ar.edu.unlam.dominio.EstadoDelEmpleado;
 import ar.edu.unlam.dominio.EstadoDelPuesto;
 import ar.edu.unlam.dominio.Gerente;
 import ar.edu.unlam.dominio.Cajero;
@@ -31,7 +32,7 @@ public class TestSoftwareMc {
 		//INICIALIZACI�N
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
 		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10);
-		Empleado empleado=new Empleado(001,"TOM�S","GONZALES",44121456,700.0);
+		Empleado empleado=new Empleado(001,"TOM�S","GONZALES",44121456,700.0, EstadoDelEmpleado.LIBRE);
 		
 		//EJECUCI�N
 		Boolean contratarEmpelado=gerente.contratarEmpleado(empleado,sf);
@@ -51,7 +52,7 @@ public class TestSoftwareMc {
 		//INICIALIZACI�N
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
 		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10);
-		Empleado empleado=new Empleado(002,"TOM�S","GONZALES",44121456,700.0);
+		Empleado empleado=new Empleado(002,"TOM�S","GONZALES",44121456,700.0, EstadoDelEmpleado.LIBRE);
 		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"LEO","SANCHEZ",14784225,1200.0);
 		Lobby lobby=new Lobby(EstadoDelPuesto.SEGURO,3,01,10,true);
 		
@@ -76,7 +77,7 @@ public class TestSoftwareMc {
 		//INICIALIZACI�N
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
 		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10);
-		Empleado empleado=new Empleado(002,"TOM�S","GONZALES",44121456,700.0);
+		Empleado empleado=new Empleado(002,"TOM�S","GONZALES",44121456,700.0,EstadoDelEmpleado.LIBRE);
 		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"LEO","SANCHEZ",14784225,1200.0);
 		Caja caja=new Caja(EstadoDelPuesto.SEGURO,2,01,1,100.0,0);
 		CamaraDeSeguridad camara=new CamaraDeSeguridad(1,false);
@@ -118,13 +119,13 @@ public class TestSoftwareMc {
 		//EJECUCI�N
 		Boolean evaluarAgregarPuestoDeTrabajo=empleadoDeMantenimiento.agregarUnaCocina(cocina, sf);
 		
-		empleado=new Empleado(002,"TOM�S","GONZALES",44121456,700.0);
+		empleado=new Empleado(002,"TOM�S","GONZALES",44121456,700.0,EstadoDelEmpleado.LIBRE);
 		Boolean evaluarContratarEmpleado=gerente.contratarEmpleado(empleado,sf);
 		
-		empleado=new Empleado(003,"JAZ","KILOS",12547896,700.0);
+		empleado=new Empleado(003,"JAZ","KILOS",12547896,700.0,EstadoDelEmpleado.LIBRE);
 		evaluarContratarEmpleado=gerente.contratarEmpleado(empleado,sf);
 		
-		empleado=new Empleado(004,"TOMAS","BOTACHI",223147852,700.0);
+		empleado=new Empleado(004,"TOMAS","BOTACHI",223147852,700.0,EstadoDelEmpleado.LIBRE);
 		evaluarContratarEmpleado=gerente.contratarEmpleado(empleado,sf);
 		
 		
@@ -250,7 +251,67 @@ public class TestSoftwareMc {
 		//assertTrue(obtenido);
 	
 	
-	
 	}
-
+	//////////////////////////////////
+	@Test
+	public void queNoSePuedaAgregarUnEmpleadoDuplicadoEnUnPuesto() {
+		//INICIALIZACION
+		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
+		Gerente gerente=new Gerente(001,"ISABELLA","PEREZ",40650392,1500.0,true,10);
+		Empleado empleado=new Empleado(002,"MAURO","GOMEZ",39403182,700.0,EstadoDelEmpleado.LIBRE);
+		Empleado empleado2=new Empleado(003,"RICARDO","CASANOVA",30403152,700.0,EstadoDelEmpleado.LIBRE);
+		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"JORGE","LOPEZ",15890240,1200.0);
+		Caja caja=new Caja(EstadoDelPuesto.SEGURO,3,01,1,500.0,0);
+		
+		//EJECUCION
+		Boolean contratarEmpleado = gerente.contratarEmpleado(empleado, sf);
+		Boolean evaluarAAgregarPuestoDeTrabajo = empleadoDeMantenimiento.agregarUnaCaja(caja , sf);
+		gerente.asignarElLaborDeCajaAUnEmpleado(002, 01, sf);
+		Boolean contratarEmpleado2 = gerente.contratarEmpleado(empleado2, sf);
+		gerente.asignarElLaborDeCajaAUnEmpleado(003, 01, sf);
+		gerente.asignarElLaborDeCajaAUnEmpleado(002, 01, sf);
+		//EVALUACION
+		assertEquals(2, sf.cantidadDeEmpleadosAsignadosEnCaja(01));
+		
+	}
+	//////////////////////////////////
+	
+	@Test
+	public void queElDeMantenimientoPuedaArreglarUnPuestoDeTrabajo() {
+		//INICIALIZACION
+		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
+		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"JORGE","LOPEZ",15890240,1200.0);
+		Cocina cocina=new Cocina(EstadoDelPuesto.EN_REPARACION,4,1,false);
+		CamaraDeSeguridad camara=new CamaraDeSeguridad(1,false);
+		
+		//EJECUCION
+		Boolean evaluarAAgregarPuestoDeTrabajo = empleadoDeMantenimiento.agregarUnaCocina(cocina, sf);
+		empleadoDeMantenimiento.agregarCamaraACocina (1,sf, camara);
+		empleadoDeMantenimiento.activarODesactivarLaCamaraEnCocina(1, 1, sf);
+		empleadoDeMantenimiento.arreglarPuestoDeTrabajo(cocina);
+		
+		//EVALUACION
+		assertEquals(EstadoDelPuesto.SEGURO, cocina.getEstadoDelPuesto());
+		
+	}
+	/////////////////////////////////
+	
+	@Test
+	public void queElGerenteNoPuedaPagarAUnEmpleadoSuspendido() {
+		//INICIALIZACION	
+		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
+		Gerente gerente=new Gerente(001,"ISABELLA","PEREZ",40650392,1500.0,true,10);
+		Empleado empleado=new Empleado(002,"MAURO","GOMEZ",39403182,700.0,EstadoDelEmpleado.LIBRE);
+		
+		//EJECUCION
+		gerente.contratarEmpleado(empleado, sf);
+		gerente.suspenderEmpleado(empleado);
+		gerente.pagarEmpleado(empleado);
+		
+		//EVALUACION
+		assertEquals(0.0, empleado.getSueldo(), 0.1);
+		
+	}
+	
+	
 }
