@@ -35,7 +35,8 @@ public class Lobby extends PuestoDeTrabajo{
 
 	
 	
-	public boolean brindarEstadoDeLimpieza() {
+	public Boolean brindarEstadoDeLimpieza() {
+		
 		return false;
 	}
 

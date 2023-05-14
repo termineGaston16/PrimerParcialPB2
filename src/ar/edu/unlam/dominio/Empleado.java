@@ -76,7 +76,16 @@ public class Empleado {
 		return Objects.equals(dni, other.dni) && Objects.equals(id, other.id);
 	}
 
-	public void adicionarPlus() {
+	public Double adicionarPlus(Integer cantidadVendida) {
+		Double plus = 2000.0;
+		Double total;
+		if(cantidadVendida >= 5) {
+			total = sueldo + plus;
+			return total;
+		}else {
+			total= sueldo;
+			return total;
+		}
 		
 	}
 }

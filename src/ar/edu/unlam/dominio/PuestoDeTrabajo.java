@@ -47,7 +47,10 @@ public class PuestoDeTrabajo {
 
 
 	public EstadoDelPuesto getEstadoDelPuesto() {
-		return estadoDelPuesto;
+		if(listaDeCamarasAsignadasAEstePuestoDeTrabajo.size() == 0) {
+			return estadoDelPuesto.INSEGURO;
+		}
+		return estadoDelPuesto.SEGURO;
 	}
 
 	public void setEstadoDelPuesto(EstadoDelPuesto estadoDelPuesto) {

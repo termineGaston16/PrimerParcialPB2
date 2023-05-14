@@ -6,15 +6,12 @@ public class EmpleadoDeLimpieza extends Empleado{
 		super(id, nombre, apellido, dni, sueldo);
 
 	}
-
-
-	public void EmpleadoDeLimpieza() {
 		
-	}
-		
-
-	public void limpiar() {
-		
+	public void limpiar(Lobby lobby) {
+		Boolean estadoDeLimpieza = lobby.getEsteLobbyEstaLimpio();
+		if(!estadoDeLimpieza) {
+			lobby.setEsteLobbyEstaLimpio(true);
+		}
 	};
 
 }

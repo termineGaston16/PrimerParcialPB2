@@ -1,5 +1,6 @@
 package ar.edu.unlam.dominio;
 
+import java.awt.Adjustable;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -50,8 +51,9 @@ public class Gerente extends Empleado{
 	public void regitrarUnTrabajoRealizado(String idRegistro,String puestoDetrabajo,Enum estadoDelPuesto,HashSet<Empleado>listaDeEmpleado,Date fecha) {
 		
 	};
-	public void pagarSueldoAlEmpleadoEmpleado() {
-		
+	public Double pagarSueldoAlEmpleado(Empleado empleado, Caja caja) {
+		Double total = empleado.adicionarPlus(caja.getCantidadDePedidosRealizados());
+		return total;
 	}
 
 	public void asignarElLaborDeCajaAUnEmpleado(int idDelEmpelado, int idDeCaja, SoftwarePrincipal sf) {
