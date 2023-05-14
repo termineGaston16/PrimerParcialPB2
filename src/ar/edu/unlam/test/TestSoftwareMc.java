@@ -31,7 +31,7 @@ public class TestSoftwareMc {
 		
 		//INICIALIZACI�N
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
-		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10);
+		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10,EstadoDelEmpleado.LIBRE);
 		Empleado empleado=new Empleado(001,"TOM�S","GONZALES",44121456,700.0, EstadoDelEmpleado.LIBRE);
 		
 		//EJECUCI�N
@@ -51,9 +51,9 @@ public class TestSoftwareMc {
 		
 		//INICIALIZACI�N
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
-		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10);
+		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10,EstadoDelEmpleado.LIBRE);
 		Empleado empleado=new Empleado(002,"TOM�S","GONZALES",44121456,700.0, EstadoDelEmpleado.LIBRE);
-		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"LEO","SANCHEZ",14784225,1200.0);
+		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"LEO","SANCHEZ",14784225,1200.0,EstadoDelEmpleado.LIBRE);
 		Lobby lobby=new Lobby(EstadoDelPuesto.SEGURO,3,01,10,true);
 		
 		
@@ -76,9 +76,9 @@ public class TestSoftwareMc {
 		
 		//INICIALIZACI�N
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
-		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10);
+		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10,EstadoDelEmpleado.LIBRE);
 		Empleado empleado=new Empleado(002,"TOM�S","GONZALES",44121456,700.0,EstadoDelEmpleado.LIBRE);
-		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"LEO","SANCHEZ",14784225,1200.0);
+		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"LEO","SANCHEZ",14784225,1200.0,EstadoDelEmpleado.LIBRE);
 		Caja caja=new Caja(EstadoDelPuesto.SEGURO,2,01,1,100.0,0);
 		CamaraDeSeguridad camara=new CamaraDeSeguridad(1,false);
 		CamaraDeSeguridad camara2=new CamaraDeSeguridad(2,false);
@@ -108,9 +108,9 @@ public class TestSoftwareMc {
 		
 		//INICIALIZACI�N
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
-		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10);
+		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10,EstadoDelEmpleado.LIBRE);
 		Cocina cocina=new Cocina(EstadoDelPuesto.EN_REPARACION,4,1,true);
-		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"LEO","SANCHEZ",14784225,1200.0);
+		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"LEO","SANCHEZ",14784225,1200.0,EstadoDelEmpleado.LIBRE);
 		Empleado empleado=null;
 		InformeDeUnTrabajo informe=null;
 		Caja caja=null;
@@ -151,10 +151,10 @@ public class TestSoftwareMc {
 		
 		//INICIALIZACI�N
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
-		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10);
+		Gerente gerente=new Gerente(001,"MILAGROS","FERRAZA",44715022,1500.0,true,10,EstadoDelEmpleado.LIBRE);
 		Lobby lobby=new Lobby(EstadoDelPuesto.SEGURO,3,1,10,false);
 		Caja caja=new Caja(EstadoDelPuesto.INSEGURO,2,01,1,100.0,0);
-		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"LEO","SANCHEZ",14784225,1200.0);
+		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"LEO","SANCHEZ",14784225,1200.0,EstadoDelEmpleado.LIBRE);
 		InformeDeUnTrabajo informe=null;
 				
 				
@@ -195,8 +195,8 @@ public class TestSoftwareMc {
 		
 		//INICIALIZACI�N
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
-		Gerente gerente = new Gerente(1234, "Pablo", "Perez", 33123456, 200000.0, true, 5);
-		Cajero cajero1 = new Cajero(5678, "Ana", "Lopez", 22456654, 30000.0, 100.0);
+		Gerente gerente = new Gerente(1234, "Pablo", "Perez", 33123456, 200000.0, true, 5, EstadoDelEmpleado.LIBRE);
+		Cajero cajero1 = new Cajero(5678, "Ana", "Lopez", 22456654, 30000.0, 100.0, EstadoDelEmpleado.LIBRE);
 		Caja caja1=new Caja(EstadoDelPuesto.SEGURO,4,1234,1,1000.0,5);
 		
 		
@@ -218,7 +218,7 @@ public class TestSoftwareMc {
 		
 		//INICIALIZACI�N
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
-		EmpleadoDeLimpieza empleado1 = new EmpleadoDeLimpieza(123, "Ricardo", "Arjona", 12345678, 20000.0);
+		EmpleadoDeLimpieza empleado1 = new EmpleadoDeLimpieza(123, "Ricardo", "Arjona", 12345678, 20000.0, EstadoDelEmpleado.LIBRE);
 		Lobby lobby1 = new Lobby(EstadoDelPuesto.SEGURO,10,123,15,false);
 		
 		//EJECUCI�N
@@ -232,23 +232,25 @@ public class TestSoftwareMc {
 	
 	///////////////////////////////////
 	@Test
-	public void siLaCocinaEstaInestableOInseguraNoSePuedeTomarPedidos() {
+	public void siLaCocinaEstaInestableNoSePuedeTomarPedidos() {
 		
 		//INICIALIZACI�N
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
 		//Cocina cocina = new Cocina(EstadoDelPuesto.INSEGURO, 5, 1234, false);
 		Cocina cocina2 = new Cocina(EstadoDelPuesto.SEGURO, 5, 1234, true);
+		CamaraDeSeguridad camara1 = new CamaraDeSeguridad(123, true);
+		Mantenimiento mantenimiento = new Mantenimiento(123, "Gonzalez", "Pepito", 335566789, 2000.0, EstadoDelEmpleado.LIBRE);
 		Menu cuartoDeLibra = new Menu("Cuarto de libra", 200.0);
-		Cajero cajero1 = new Cajero(5678, "Ana", "Lopez", 22456654, 30000.0, 100.0);
+		Cajero cajero1 = new Cajero(5678, "Ana", "Lopez", 22456654, 30000.0, 100.0, EstadoDelEmpleado.LIBRE);
 		
 		//EJECUCI�N
 		sf.agregarUnaHamburguesaAlMenu(cuartoDeLibra);
+		mantenimiento.agregarCamaraACocina(1234, sf, camara1);
 		Integer esperado = 1;
-		Integer obtenido = cajero1.tomarPedido(sf, cuartoDeLibra, cocina2).size();
+		Integer obtenido = cajero1.tomarPedido(cuartoDeLibra, cocina2).size();
 		
 		//EVALUACI�N
 		assertEquals(esperado, obtenido);
-		//assertTrue(obtenido);
 	
 	
 	}
@@ -257,10 +259,10 @@ public class TestSoftwareMc {
 	public void queNoSePuedaAgregarUnEmpleadoDuplicadoEnUnPuesto() {
 		//INICIALIZACION
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
-		Gerente gerente=new Gerente(001,"ISABELLA","PEREZ",40650392,1500.0,true,10);
+		Gerente gerente=new Gerente(001,"ISABELLA","PEREZ",40650392,1500.0,true,10,EstadoDelEmpleado.LIBRE);
 		Empleado empleado=new Empleado(002,"MAURO","GOMEZ",39403182,700.0,EstadoDelEmpleado.LIBRE);
 		Empleado empleado2=new Empleado(003,"RICARDO","CASANOVA",30403152,700.0,EstadoDelEmpleado.LIBRE);
-		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"JORGE","LOPEZ",15890240,1200.0);
+		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"JORGE","LOPEZ",15890240,1200.0,EstadoDelEmpleado.LIBRE);
 		Caja caja=new Caja(EstadoDelPuesto.SEGURO,3,01,1,500.0,0);
 		
 		//EJECUCION
@@ -280,7 +282,7 @@ public class TestSoftwareMc {
 	public void queElDeMantenimientoPuedaArreglarUnPuestoDeTrabajo() {
 		//INICIALIZACION
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
-		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"JORGE","LOPEZ",15890240,1200.0);
+		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"JORGE","LOPEZ",15890240,1200.0,EstadoDelEmpleado.LIBRE);
 		Cocina cocina=new Cocina(EstadoDelPuesto.EN_REPARACION,4,1,false);
 		CamaraDeSeguridad camara=new CamaraDeSeguridad(1,false);
 		
@@ -300,7 +302,7 @@ public class TestSoftwareMc {
 	public void queElGerenteNoPuedaPagarAUnEmpleadoSuspendido() {
 		//INICIALIZACION	
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
-		Gerente gerente=new Gerente(001,"ISABELLA","PEREZ",40650392,1500.0,true,10);
+		Gerente gerente=new Gerente(001,"ISABELLA","PEREZ",40650392,1500.0,true,10,EstadoDelEmpleado.LIBRE);
 		Empleado empleado=new Empleado(002,"MAURO","GOMEZ",39403182,700.0,EstadoDelEmpleado.LIBRE);
 		
 		//EJECUCION

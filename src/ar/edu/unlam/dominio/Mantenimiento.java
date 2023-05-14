@@ -2,8 +2,8 @@ package ar.edu.unlam.dominio;
 
 public class Mantenimiento extends Empleado{
 		
-	public Mantenimiento(Integer id, String nombre, String apellido, Integer dni, Double sueldo) {
-		super(id, nombre, apellido, dni, sueldo);
+	public Mantenimiento(Integer id, String nombre, String apellido, Integer dni, Double sueldo, EstadoDelEmpleado estadoDelEmpleado) {
+		super(id, nombre, apellido, dni, sueldo, estadoDelEmpleado);
 	
 	}
 	
@@ -83,7 +83,7 @@ public class Mantenimiento extends Empleado{
 
 
 	public void activarODesactivarLaCamaraEnCocina(int idPuestoDeTrabajo, int idDeCamaraDeSeguridad, SoftwarePrincipal sf) {
-		Cocina buscarCocina=sf.buscarPuestoDeTrabajoCocinaEnElSistema(idDePuestoDeTrabajo);
+		Cocina buscarCocina=sf.buscarPuestoDeTrabajoCocinaEnElSistema(idPuestoDeTrabajo);
 		 buscarCocina.activarODesactivarCamaraEnCocina(idDeCamaraDeSeguridad);
 		}
 	}

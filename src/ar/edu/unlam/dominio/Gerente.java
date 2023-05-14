@@ -11,7 +11,7 @@ public class Gerente extends Empleado{
 		
 
 	public Gerente(Integer id, String nombre, String apellido, Integer dni, Double sueldo, Boolean tieneCochera,
-			Integer cantidadDeEmpleadosACargo) {
+			Integer cantidadDeEmpleadosACargo, EstadoDelEmpleado estadoDelEmpleado) {
 		super(id, nombre, apellido, dni, sueldo, estadoDelEmpleado);
 		this.tieneCochera = tieneCochera;
 		this.cantidadDeEmpleadosACargo = cantidadDeEmpleadosACargo;

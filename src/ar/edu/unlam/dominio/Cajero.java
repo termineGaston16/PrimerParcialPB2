@@ -10,8 +10,8 @@ public class Cajero extends Empleado{
 	
 	private List<Menu> pedidos;
 		
-	public Cajero(Integer id, String nombre, String apellido, Integer dni, Double sueldo, Double saldoInicialDeCaja) {
-		super(id, nombre, apellido, dni, sueldo);
+	public Cajero(Integer id, String nombre, String apellido, Integer dni, Double sueldo, Double saldoInicialDeCaja, EstadoDelEmpleado estadoDelEmpleado) {
+		super(id, nombre, apellido, dni, sueldo, estadoDelEmpleado);
 		this.saldoInicialDeCaja = saldoInicialDeCaja;
 	}
 
@@ -22,14 +22,15 @@ public class Cajero extends Empleado{
 		
 	};
 	
-	//public List<Menu> tomarPedido(Menu menu, Cocina cocina) {
-	public List<Menu> tomarPedido(SoftwarePrincipal sf, Menu menu, Cocina cocina) {
+	public List<Menu> tomarPedido(Menu menu, Cocina cocina) {
+	//public List<Menu> tomarPedido(SoftwarePrincipal sf, Menu menu, Cocina cocina) {
 		pedidos = new ArrayList<Menu>();
-		if(cocina.getLaCocinaEstaEstable() && cocina.getEstadoDelPuesto().equals(EstadoDelPuesto.SEGURO)) {
-			HashSet<Menu> menues = sf.agregarUnaHamburguesaAlMenu(menu);
+		if(cocina.getLaCocinaEstaEstable()) {
+			//HashSet<Menu> menues = sf.agregarUnaHamburguesaAlMenu(menu);
 			pedidos.add(menu);
 		}
 		return pedidos;
 	}
 
+	//&& cocina.getEstadoDelPuesto().equals(EstadoDelPuesto.SEGURO)
 }
