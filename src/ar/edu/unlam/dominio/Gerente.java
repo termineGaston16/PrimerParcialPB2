@@ -10,10 +10,10 @@ public class Gerente extends Empleado{
 	private Integer cantidadDeEmpleadosACargo;
 		
 
-	public Gerente(Integer id, String nombre, String apellido, Integer dni, Double sueldo, Boolean tieneConchera,
+	public Gerente(Integer id, String nombre, String apellido, Integer dni, Double sueldo, Boolean tieneCochera,
 			Integer cantidadDeEmpleadosACargo) {
-		super(id, nombre, apellido, dni, sueldo);
-		this.tieneCochera = tieneConchera;
+		super(id, nombre, apellido, dni, sueldo, estadoDelEmpleado);
+		this.tieneCochera = tieneCochera;
 		this.cantidadDeEmpleadosACargo = cantidadDeEmpleadosACargo;
 	}
 	
@@ -24,12 +24,6 @@ public class Gerente extends Empleado{
 		
 	};
 	
-	public void despedirEmpleado() {
-		
-	};
-	public void suspenderEmpleado() {
-		
-	};
 	
 	public Boolean asignarElLaborDeLobbyAUnEmpleado(int idDelEmpelado, int idDelPuestoDeTrabajo, SoftwarePrincipal sf) {
 		Empleado empleadoAsignado=sf.buscarEmpleadoEnElSistema(idDelEmpelado);
@@ -94,6 +88,15 @@ public class Gerente extends Empleado{
         double nuevoSalario = empleado.getSueldo() + aumento;
         empleado.setSueldo(nuevoSalario);
     }
+    
+	public void suspenderEmpleado(Empleado empleado) {
+		if (empleado.getEstadoDelEmpleado().equals(estadoDelEmpleado.LIBRE)) {
+			empleado.setEstadoDelEmpleado(estadoDelEmpleado.SUSPENDIDO);
+		}
+				
+		
+	};
+    
 	
 	public void despedirEmpleado(Empleado empleado, SoftwarePrincipal softwarePrincipal) {
 	      

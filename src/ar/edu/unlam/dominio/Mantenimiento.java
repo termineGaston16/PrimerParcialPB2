@@ -56,7 +56,9 @@ public class Mantenimiento extends Empleado{
 	}
 
 	public void arreglarPuestoDeTrabajo (PuestoDeTrabajo puestoDeTrabajo) {
-		puestoDeTrabajo.setEstadoDelPuesto(EstadoDelPuesto.SEGURO);
+		if (puestoDeTrabajo.getEstadoDelPuesto().equals(EstadoDelPuesto.EN_REPARACION)||puestoDeTrabajo.getEstadoDelPuesto().equals(EstadoDelPuesto.INSEGURO)) {
+			puestoDeTrabajo.setEstadoDelPuesto(EstadoDelPuesto.SEGURO);
+			}
 	}
 
 	public void cuidarJardin(Jardin jardin) {
