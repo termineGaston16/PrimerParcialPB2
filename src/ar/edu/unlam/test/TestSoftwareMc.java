@@ -296,9 +296,10 @@ public class TestSoftwareMc {
 		//EJECUCION
 		gerente.contratarEmpleado(empleado, sf);
 		gerente.suspenderEmpleado(empleado);
+		gerente.pagarEmpleado(empleado);
 		
 		//EVALUACION
-		
+		assertEquals(0.0, empleado.getSueldo(), 0.1);
 		
 	}
 	

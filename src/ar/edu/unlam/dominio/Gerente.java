@@ -104,5 +104,16 @@ public class Gerente extends Empleado{
 
 	      listaDeEmpleados.remove(empleado);
 	   }
+
+
+
+	public void pagarEmpleado(Empleado empleado) {
+		double sueldoActual=empleado.getSueldo();
+		double montoAPagar=800.0;
+		if (empleado.getEstadoDelEmpleado().equals(estadoDelEmpleado.LIBRE)){
+			empleado.setSueldo(sueldoActual + montoAPagar);
+		}
+		
+	}
     
 }
