@@ -31,6 +31,26 @@ public class Cocina extends PuestoDeTrabajo{
 		
 	}
 
+
+	public Boolean agregarUnaCamara(CamaraDeSeguridad camara) {
+		return this.listaDeCamarasAsignadasAEstePuestoDeTrabajo.add(camara);
+
+	}
+
+
+	public void activarODesactivarCamaraEnCocina(int idDeCamaraDeSeguridad) {
+		for (CamaraDeSeguridad camaraDeSeguridad : listaDeCamarasAsignadasAEstePuestoDeTrabajo) {
+			if (camaraDeSeguridad.getIdDeCamara().equals(idDeCamaraDeSeguridad)) {
+			if (!camaraDeSeguridad.getEstaPrendida()) {
+			camaraDeSeguridad.setEstaPrendida(true);
+			}else {
+			camaraDeSeguridad.setEstaPrendida(false);
+			}
+		}
+	}
+		
+	}
+
 	
 	
 	

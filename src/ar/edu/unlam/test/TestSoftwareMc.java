@@ -271,15 +271,20 @@ public class TestSoftwareMc {
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
 		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"JORGE","LOPEZ",15890240,1200.0);
 		Cocina cocina=new Cocina(EstadoDelPuesto.EN_REPARACION,4,1,false);
+		CamaraDeSeguridad camara=new CamaraDeSeguridad(1,false);
 		
 		//EJECUCION
 		Boolean evaluarAAgregarPuestoDeTrabajo = empleadoDeMantenimiento.agregarUnaCocina(cocina, sf);
+		empleadoDeMantenimiento.agregarCamaraACocina (1,sf, camara);
+		empleadoDeMantenimiento.activarODesactivarLaCamaraEnCocina(1, 1, sf);
 		empleadoDeMantenimiento.arreglarPuestoDeTrabajo(cocina);
 		
 		//EVALUACION
 		assertEquals(EstadoDelPuesto.SEGURO, cocina.getEstadoDelPuesto());
 		
 	}
+	/////////////////////////////////
+	
 	
 	
 }
