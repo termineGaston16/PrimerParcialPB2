@@ -8,13 +8,12 @@ public class Mantenimiento extends Empleado{
 	}
 	
 	
-	public void rreglarUnPuestoDeTrabajo() {
-		
-	};
 	public void prenderCamaras() {
+		
 		
 	};
 	public void apagarCamaras() {
+		
 		
 	};
 	
@@ -56,6 +55,16 @@ public class Mantenimiento extends Empleado{
 		
 	}
 
-	
+	public void arreglarPuestoDeTrabajo (PuestoDeTrabajo puestoDeTrabajo) {
+		puestoDeTrabajo.setEstadoDelPuesto(EstadoDelPuesto.SEGURO);
+	}
 
+	public void cuidarJardin(Jardin jardin) {
+	    jardin.cortarCesped();
+	    jardin.podarArboles();
+	    jardin.regarPlantas();
+	}
+	
+	
+	
 }

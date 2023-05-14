@@ -6,14 +6,14 @@ import java.util.HashSet;
 
 public class Gerente extends Empleado{
 	
-	private Boolean tieneConchera;
+	private Boolean tieneCochera;
 	private Integer cantidadDeEmpleadosACargo;
 		
 
 	public Gerente(Integer id, String nombre, String apellido, Integer dni, Double sueldo, Boolean tieneConchera,
 			Integer cantidadDeEmpleadosACargo) {
 		super(id, nombre, apellido, dni, sueldo);
-		this.tieneConchera = tieneConchera;
+		this.tieneCochera = tieneConchera;
 		this.cantidadDeEmpleadosACargo = cantidadDeEmpleadosACargo;
 	}
 	
@@ -64,8 +64,6 @@ public class Gerente extends Empleado{
 		
 	}
 
-
-
 	public Boolean asignarElLaborDeCocinaAUnEmpleado(int idDelEmpelado, int idDeCocina, SoftwarePrincipal sf) {
 		Empleado empleadoAsignado=sf.buscarEmpleadoEnElSistema(idDelEmpelado);
 		Cocina puestoAsignado=sf.buscarPuestoDeTrabajoCocinaEnElSistema(idDeCocina);
@@ -83,5 +81,25 @@ public class Gerente extends Empleado{
 		
 	}
 	
+	public double contabilizarCajas(Caja ... cajas) {
+		double montoTotal=0.0;
+		for (Caja caja:cajas) {
+			montoTotal += caja.getMontoActualDeLaCaja();
+		}
+		return montoTotal;
+		
+	}
+	
+    public void aumentarIngresoEmpleado(Empleado empleado, double aumento) {
+        double nuevoSalario = empleado.getSueldo() + aumento;
+        empleado.setSueldo(nuevoSalario);
+    }
+	
+	public void despedirEmpleado(Empleado empleado, SoftwarePrincipal softwarePrincipal) {
+	      
+	      HashSet<Empleado> listaDeEmpleados = softwarePrincipal.getListaDeEmpleados();
 
+	      listaDeEmpleados.remove(empleado);
+	   }
+    
 }

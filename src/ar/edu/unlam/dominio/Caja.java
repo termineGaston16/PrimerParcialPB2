@@ -5,15 +5,15 @@ import java.util.ArrayList;
 public class Caja extends PuestoDeTrabajo{
 
 	private Integer idDeCaja;
-	private Double montoActualDeLaCama;
+	private Double montoActualDeLaCaja;
 	private Integer cantidadDePedidosRealizados;
 	
 	
 	public Caja(EstadoDelPuesto estadoDelPuesto, Integer cantidadMaximaDeEmpleadosParaEstePuesto, Integer idDelPuesto,
-			Integer idDeCaja, Double montoActualDeLaCama, Integer cantidadDePedidosRealizados) {
+			Integer idDeCaja, Double montoActualDeLaCaja, Integer cantidadDePedidosRealizados) {
 		super(estadoDelPuesto, cantidadMaximaDeEmpleadosParaEstePuesto, idDelPuesto);
 		this.idDeCaja = idDeCaja;
-		this.montoActualDeLaCama = montoActualDeLaCama;
+		this.montoActualDeLaCaja = montoActualDeLaCaja;
 		this.cantidadDePedidosRealizados = cantidadDePedidosRealizados;
 	}
 
@@ -25,12 +25,12 @@ public class Caja extends PuestoDeTrabajo{
 		this.idDeCaja = idDeCaja;
 	}
 
-	public Double getMontoActualDeLaCama() {
-		return montoActualDeLaCama;
+	public Double getMontoActualDeLaCaja() {
+		return montoActualDeLaCaja;
 	}
 
-	public void setMontoActualDeLaCama(Double montoActualDeLaCama) {
-		this.montoActualDeLaCama = montoActualDeLaCama;
+	public void setMontoActualDeLaCaja(Double montoActualDeLaCaja) {
+		this.montoActualDeLaCaja = montoActualDeLaCaja;
 	}
 
 	public Integer getCantidadDePedidosRealizados() {

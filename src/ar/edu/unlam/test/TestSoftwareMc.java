@@ -240,7 +240,27 @@ public class TestSoftwareMc {
 		//EVALUACI�N
 	
 	
-	
 	}
-
+	
+	@Test
+	public void queNoSePuedaAgregarUnEmpleadoDuplicadoEnUnPuesto() {
+		//INICIALIZACION
+		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");
+		Gerente gerente=new Gerente(001,"ISABELLA","PEREZ",40650392,1500.0,true,10);
+		Empleado empleado=new Empleado(002,"MAURO","GOMEZ",39403182,700.0);
+		Mantenimiento empleadoDeMantenimiento=new Mantenimiento(003,"JORGE","LOPEZ",15890240,1200.0);
+		Caja caja=new Caja(EstadoDelPuesto.SEGURO,3,01,1,500.0,0);
+		
+		//EJECUCION
+		Boolean contratarEmpleado = gerente.contratarEmpleado(empleado, sf);
+		Boolean evaluarAAgregarPuestoDeTrabajo = empleadoDeMantenimiento.agregarUnaCaja(caja , sf);
+		gerente.asignarElLaborDeCajaAUnEmpleado(002, 01, sf);
+		
+		
+		//EVALUACION
+		assertEquals(1, sf.cantidadDeEmpleadosAsignadosEnCaja(01));
+	}
+	
+	
+	
 }
