@@ -29,13 +29,4 @@ public class Cliente {
 		this.dniDelCliente = dniDelCliente;
 	}
 	
-	
-	public void realizarPedido() {
-		
-	}
-	
-	public void pagarPedido() {
-		
-	}
-	
 }

@@ -14,11 +14,6 @@ public class Cajero extends Empleado{
 		super(id, nombre, apellido, dni, sueldo, estadoDelEmpleado);
 		this.saldoInicialDeCaja = saldoInicialDeCaja;
 	}
-
-
-	public void cobrarAlCliente() {
-		
-	};
 	
 	public List<Menu> tomarPedido(Menu menu, Cocina cocina) {
 		pedidos = new ArrayList<Menu>();

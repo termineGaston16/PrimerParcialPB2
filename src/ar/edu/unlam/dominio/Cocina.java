@@ -50,11 +50,5 @@ public class Cocina extends PuestoDeTrabajo{
 	}
 		
 	}
-
-	
-	
-	
-	
-	
 	
 }

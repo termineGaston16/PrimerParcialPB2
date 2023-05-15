@@ -175,7 +175,7 @@ public class TestSoftwareMc {
 		
 	///////////////////////////////////ESTE
 	@Test
-	public void queUnPuestoDeTrabajoSeaSeguroSiTienePorLoMenosUnaCamaraColocada() {
+	public void queUnLaCocinaSeaInSeguraSiNoTienePorLoMenosUnaCamaraColocada() {
 	
 		//INICIALIZACI�N
 		SoftwarePrincipal sf=new SoftwarePrincipal("SISTEMA DE MACDONALS 2023");

@@ -22,10 +22,5 @@ public class CamaraDeSeguridad {
 	public void setEstaPrendida(Boolean estaPrendida) {
 		this.estaPrendida = estaPrendida;
 	}
-	 
-	 
-	
-	
-	 
-	 
+	 	 
 }

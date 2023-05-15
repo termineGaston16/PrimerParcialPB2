@@ -42,15 +42,6 @@ public class Caja extends PuestoDeTrabajo{
 	}
 
 
-	
-	public void asignarCajero() {
-		
-	}
-	
-	public void ingresarAlSistemaElDineroRecaudado() {
-		
-	}
-
 	public Boolean agregarUnaCamara(CamaraDeSeguridad camara) {
 		return this.listaDeCamarasAsignadasAEstePuestoDeTrabajo.add(camara);
 		

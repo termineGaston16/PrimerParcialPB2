@@ -61,12 +61,6 @@ public class Mantenimiento extends Empleado{
 			}
 	}
 
-	public void cuidarJardin(Jardin jardin) {
-	    jardin.cortarCesped();
-	    jardin.podarArboles();
-	    jardin.regarPlantas();
-	}
-
 	public boolean agregarCamaraACocina(int idDePuestoDeTrabajo, SoftwarePrincipal sf, CamaraDeSeguridad camara) {
 		Cocina buscarCocina=sf.buscarPuestoDeTrabajoCocinaEnElSistema(idDePuestoDeTrabajo);
 		if (buscarCocina==null) {
